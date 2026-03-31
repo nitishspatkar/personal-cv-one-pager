@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "name": "Nitish Patkar",
+    "jobTitle": ""
+  },
+  "about": "",
+  "contact": {
+    "website": "",
+    "email": "",
+    "phone": "",
+    "linkedin": "",
+    "github": ""
+  },
+  "experience": [
+    {
+      "company": "FHNW",
+      "role": "",
+      "period": "",
+      "location": "",
+      "body": ""
+    },
+    {
+      "company": "University of Bern",
+      "role": "",
+      "period": "",
+      "location": "",
+      "body": ""
+    },
+    {
+      "company": "ActiDo GmbH",
+      "role": "",
+      "period": "",
+      "location": "",
+      "body": ""
+    },
+    {
+      "company": "University of Paderborn",
+      "role": "",
+      "period": "",
+      "location": "",
+      "body": ""
+    },
+    {
+      "company": "Infosys Ltd.",
+      "role": "",
+      "period": "",
+      "location": "",
+      "body": ""
+    }
+  ],
+  "education": [
+    {
+      "years": "",
+      "institution": "",
+      "degree": ""
+    },
+    {
+      "years": "",
+      "institution": "",
+      "degree": ""
+    },
+    {
+      "years": "",
+      "institution": "",
+      "degree": ""
+    }
+  ],
+  "skills": [
+    {
+      "category": "",
+      "items": ""
+    },
+    {
+      "category": "",
+      "items": ""
+    },
+    {
+      "category": "",
+      "items": ""
+    },
+    {
+      "category": "",
+      "items": ""
+    },
+    {
+      "category": "",
+      "items": ""
+    }
+  ],
+  "languages": [
+    { "name": "", "level": "" },
+    { "name": "", "level": "" },
+    { "name": "", "level": "" },
+    { "name": "", "level": "" }
+  ],
+  "highlights": [
+    "",
+    "",
+    "",
+    ""
+  ]
+}
+

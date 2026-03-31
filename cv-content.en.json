@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "name": "Nitish Patkar",
+    "jobTitle": "Senior Researcher"
+  },
+  "about": "PhD in Computer Science. I keep technical teams focused on what ships and stakeholders aligned on goals, scope, and trade-offs. I surface non-obvious requirements early, hold the line for strong UX, and I do not negotiate on data: I work data-driven. Associate Member of the International Requirements Engineering Board (IREB).",
+  "contact": {
+    "website": "https://nitishpatkar.com",
+    "email": "[email protected]",
+    "phone": "+41 77 464 14 17",
+    "linkedin": "https://linkedin.com",
+    "github": "https://github.com"
+  },
+  "experience": [
+    {
+      "company": "FHNW",
+      "role": "Senior Researcher",
+      "period": "Mar 2022 – Present",
+      "location": "Brugg, CH",
+      "body": "Led applied innovation projects with SMEs and startups across energy, mobility, and AI — from roadmap to delivery. Coached Product Owners and Agile teams on backlog prioritisation, cross-team coordination, and value delivery across Agile Release Trains. Secured research funding; managed stakeholder relationships and coordinated release plans with internal and external partners."
+    },
+    {
+      "company": "University of Bern",
+      "role": "Research Assistant",
+      "period": "Feb 2018 – Feb 2022",
+      "location": "Bern, CH",
+      "body": "Mentored 50+ students/year through full software project lifecycle; taught SE seminar and supervised BSc/MSc theses."
+    },
+    {
+      "company": "ActiDo GmbH",
+      "role": "Web Developer",
+      "period": "Jan 2017 – Jan 2018",
+      "location": "Paderborn, DE",
+      "body": "Built React front-ends from UI/UX specs; responsible for HTML, CSS, and frontend logic."
+    },
+    {
+      "company": "University of Paderborn",
+      "role": "Research Assistant",
+      "period": "Jan 2016 – Jan 2018",
+      "location": "Paderborn, DE",
+      "body": "Elicited requirements from Volksbank clients; developed a single-page sports app using Angular and Django REST."
+    },
+    {
+      "company": "Infosys Ltd.",
+      "role": "Systems Engineer",
+      "period": "Jan 2012 – Jan 2014",
+      "location": "Pune, IN",
+      "body": "PLM development on Windchill; delivered enterprise web apps for Cox Communications and other telecom clients."
+    }
+  ],
+  "education": [
+    {
+      "years": "2018 – 2022",
+      "institution": "University of Bern",
+      "degree": "Ph.D. Computer Science, Switzerland"
+    },
+    {
+      "years": "2014 – 2018",
+      "institution": "University of Paderborn",
+      "degree": "M.Sc. Computer Science, Germany"
+    },
+    {
+      "years": "2009 – 2012",
+      "institution": "University of Mumbai",
+      "degree": "B.E. Computer Science, India"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Research & PM",
+      "items": "Technical Project Management, Roadmapping, Requirements Engineering"
+    },
+    {
+      "category": "Ways of working",
+      "items": "Agile, Scrum"
+    },
+    {
+      "category": "Engineering",
+      "items": "Python, JavaScript, React, Django REST"
+    },
+    {
+      "category": "Data & AI",
+      "items": "LLMs, NLP"
+    },
+    {
+      "category": "Tools",
+      "items": "GitHub, Docker, CI/CD, Jira, Figma"
+    }
+  ],
+  "languages": [
+    { "name": "German", "level": "Business fluent" },
+    { "name": "English", "level": "Business fluent" },
+    { "name": "Hindi", "level": "Fluent" },
+    { "name": "Marathi", "level": "Mother tongue" }
+  ],
+  "highlights": [
+    "Local Organizer XP'25 — 26th International Conference on Agile Software Development.",
+    "Best Reviewer Award REFSQ 2024 & 2025.",
+    "Reviewer / PC member at IEEE RE, REFSQ, XP, TOSEM, EMSE, IST, ICT4S, SE-SRC (2012–2026).",
+    "Co-organizer of the 9th & 10th International Workshop on Crowd-Based Requirements Engineering (2025, 2026)."
+  ]
+}
+

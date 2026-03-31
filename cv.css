@@ -1,0 +1,446 @@
+/**
+ * CV Builder — layout & print styles
+ * Used by cv.html (with cv.js)
+ */
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --text:        #222222;
+  --meta:        #444444;
+  --label:       #999999;
+  --rule:        #e0e0e0;
+  --bg-app:      #d8d5cf;
+  --bg-cv:       #ffffff;
+  --bg-panel:    #f5f5f5;
+  --font:        'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* AD74 column rhythm */
+  --col-label:   110px;
+  --col-meta:    160px;
+  --cv-pad:      52px;
+  --cv-rule-gap: 14px;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg-app);
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── APP SHELL ── */
+.app { display: block; min-height: 100vh; }
+
+/* ── CONTROL PANEL ── */
+.controls { display: none; }
+.ctrl-logo {
+  font-size: 10px; font-weight: 400; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--label);
+  padding-bottom: 14px; border-bottom: 1px solid var(--rule);
+}
+.ctrl-logo strong { color: var(--text); font-weight: 500; letter-spacing: 0.05em; }
+.ctrl-section { display: flex; flex-direction: column; gap: 7px; }
+.ctrl-section > label {
+  font-size: 9px; font-weight: 500; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--label);
+}
+.tab-row { display: flex; gap: 3px; }
+.tab-btn {
+  flex: 1; padding: 6px 4px; border: 1px solid var(--rule);
+  background: var(--bg-cv); color: var(--meta);
+  font-family: var(--font); font-size: 11px; font-weight: 400;
+  cursor: pointer; transition: all 0.1s;
+}
+.tab-btn.active { background: var(--text); border-color: var(--text); color: #fff; }
+.tab-btn:hover:not(.active) { border-color: #bbb; }
+textarea.ctrl-input {
+  width: 100%; padding: 7px 9px;
+  background: var(--bg-cv); border: 1px solid var(--rule);
+  color: var(--text); font-family: var(--font); font-size: 11px;
+  resize: vertical; min-height: 90px; line-height: 1.55; outline: none;
+  transition: border-color 0.1s;
+}
+textarea.ctrl-input:focus { border-color: var(--meta); }
+textarea.ctrl-input::placeholder { color: #bbb; }
+.action-btn {
+  width: 100%; padding: 8px; border: 1px solid transparent;
+  font-family: var(--font); font-size: 11px; font-weight: 500;
+  cursor: pointer; transition: all 0.1s; letter-spacing: 0.03em;
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+}
+.action-btn.primary { background: var(--text); color: #fff; }
+.action-btn.primary:hover { background: #444; }
+.action-btn.secondary { background: transparent; border-color: var(--rule); color: var(--meta); }
+.action-btn.secondary:hover { border-color: #bbb; background: var(--bg-cv); }
+.action-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.status-msg {
+  font-size: 10px; padding: 6px 8px; border: 1px solid var(--rule);
+  background: var(--bg-cv); color: var(--meta); line-height: 1.5; display: none;
+}
+.status-msg.show { display: block; }
+.status-msg.error { border-color: #f99; color: #a00; background: #fff8f8; }
+.status-msg.success { border-color: #9c9; color: #363; background: #f8fff8; }
+
+/* ── PREVIEW AREA ── */
+.preview-area {
+  padding: 28px 24px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  overflow-y: auto;
+}
+.preview-toolbar { display: none; }
+.lang-badge {
+  font-size: 9px; font-weight: 500; letter-spacing: 0.15em;
+  text-transform: uppercase; padding: 3px 8px;
+  background: var(--text); color: #fff;
+}
+.badge-tailored {
+  background: transparent; color: var(--text); border: 1px solid var(--text);
+}
+.spacer { flex: 1; }
+.print-btn {
+  padding: 5px 12px; background: transparent; color: var(--meta);
+  border: 1px solid var(--rule); font-family: var(--font);
+  font-size: 10px; font-weight: 400; cursor: pointer; transition: all 0.1s;
+  letter-spacing: 0.05em;
+}
+.print-btn:hover { border-color: var(--meta); color: var(--text); }
+
+/* ══════════════════════════════════════════
+   CV DOCUMENT  — the AD74 style
+══════════════════════════════════════════ */
+.cv-doc {
+  width: 100%; max-width: 780px;
+  background: var(--bg-cv);
+  box-shadow: 0 1px 24px rgba(0,0,0,0.10);
+  padding: var(--cv-pad) var(--cv-pad) 64px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ── NAME / HEADER ── */
+.cv-header {
+  display: grid;
+  grid-template-columns: var(--col-label) 1fr;
+  gap: 0 24px;
+  margin-bottom: 22px;
+}
+
+/* name block only (no nav arrows) */
+.cv-name-block {}
+.cv-name {
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+.cv-job-title {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--meta);
+}
+
+/* ── SECTION ROW ── */
+/* label | content spanning rest */
+.cv-section {
+  display: grid;
+  grid-template-columns: var(--col-label) 1fr;
+  gap: 0 24px;
+  margin-bottom: 0;
+}
+.cv-section.cv-section--hidden {
+  display: none !important;
+}
+/* When a section is hidden, skip the divider immediately after it (e.g. old full Skills block) */
+.cv-section.cv-section--hidden + .cv-section:has(> .cv-rule) {
+  display: none !important;
+}
+
+/* section label */
+.cv-sec-label {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--label);
+  padding-top: 1px;
+  white-space: nowrap;
+}
+
+/* section body — spans col2+col3 by default; vertical rhythm uses .cv-rule margins */
+.cv-sec-body { padding-bottom: 0; grid-column: 2 / 4; }
+.cv-sec-col3 { grid-column: 3 / 4; }
+
+/* horizontal rule — equal space above and below everywhere */
+.cv-rule {
+  grid-column: 1 / -1;
+  height: 1px;
+  background: var(--rule);
+  margin: var(--cv-rule-gap) 0;
+}
+
+/* ── CONTACT ── */
+.contact-lines { display: flex; flex-direction: column; gap: 1px; }
+.contact-lines span,
+.contact-lines a {
+  font-size: 11px; color: var(--meta);
+  text-decoration: none; font-weight: 400;
+}
+.contact-lines a:hover { color: var(--text); }
+.contact-links { display: flex; gap: 12px; margin-top: 4px; flex-wrap: wrap; }
+.contact-links a {
+  font-size: 11px; color: var(--meta); text-decoration: none;
+  font-weight: 400; border-bottom: 1px solid var(--rule); padding-bottom: 1px;
+  transition: all 0.1s;
+}
+.contact-links a:hover { color: var(--text); border-color: var(--text); }
+
+/* ── EXPERIENCE ENTRY ── */
+/* Inside .cv-sec-body, each job is a sub-grid */
+.job {
+  display: grid;
+  grid-template-columns: var(--col-meta) 1fr;
+  gap: 0 16px;
+  margin-bottom: 16px;
+}
+.job:last-child { margin-bottom: 0; }
+
+.job-meta {}
+.job-company {
+  font-size: 12px; font-weight: 400; color: var(--text);
+  line-height: 1.4;
+}
+.job-role {
+  font-size: 11px; font-weight: 400; color: var(--meta);
+  line-height: 1.4;
+}
+.job-period {
+  font-size: 11px; font-weight: 300; color: var(--label);
+  margin-top: 2px; line-height: 1.4;
+}
+.job-location {
+  font-size: 10px; color: var(--label); margin-top: 1px;
+}
+
+.job-desc {}
+.job-desc p {
+  font-size: 12px; font-weight: 400; color: var(--meta);
+  line-height: 1.65; margin-bottom: 4px;
+}
+
+/* ── EDUCATION ── */
+.edu-entry {
+  display: grid;
+  grid-template-columns: var(--col-meta) 1fr;
+  gap: 0 16px;
+  margin-bottom: 8px;
+}
+.edu-entry:last-child { margin-bottom: 0; }
+.edu-year { font-size: 11px; font-weight: 300; color: var(--label); }
+.edu-inst { font-size: 12px; font-weight: 400; color: var(--text); }
+.edu-deg { font-size: 11px; font-weight: 400; color: var(--meta); }
+
+/* ── SKILLS — same two columns as Education / Work (meta | body text) ── */
+#skillsBlock .skill-entry {
+  display: grid;
+  grid-template-columns: var(--col-meta) 1fr;
+  gap: 0 16px;
+  margin-bottom: 5px;
+  align-items: baseline;
+}
+#skillsBlock .skill-entry:last-child { margin-bottom: 0; }
+/* Categories: same grid column as edu years & job company names */
+#skillsBlock .skill-cat {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.4;
+}
+/* Items: same column as University of Bern / job description */
+#skillsBlock .skill-items {
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--meta);
+  line-height: 1.45;
+}
+
+/* ── LANGUAGES ── */
+.lang-row { display: flex; gap: 20px; flex-wrap: wrap; }
+.lang-e { font-size: 11px; }
+.lang-n { font-weight: 400; color: var(--text); }
+.lang-l { font-weight: 300; color: var(--label); margin-left: 4px; }
+
+/* ── ABOUT ME — same outer layout as other sections; inner grid for contact | bio ── */
+.about-section {
+  /* inherits .cv-section grid: label | 1fr */
+  align-items: flex-start;
+}
+.about-section .cv-sec-label {
+  padding-top: 1px;
+}
+.about-columns {
+  display: grid;
+  /* Match meta/body layout used in .job and .edu-entry */
+  grid-template-columns: var(--col-meta) 1fr;
+  gap: 0 16px;
+  align-items: flex-start;
+  min-width: 0;
+}
+.about-contact-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+  min-width: 0;
+}
+.about-bio {
+  min-width: 0;
+}
+.about-contact-stack a,
+.about-contact-stack span {
+  font-size: 11px; color: var(--meta); text-decoration: none;
+  font-weight: 400; line-height: 1.65;
+  border-bottom: 1px solid transparent;
+  max-width: 100%;
+}
+/* Underline only as wide as the link text, not the full 140px column */
+.about-contact-stack a {
+  border-bottom-color: var(--rule);
+  width: fit-content;
+}
+.about-contact-stack a:hover { color: var(--text); border-color: var(--text); }
+.about-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.about-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--meta);
+  text-decoration: none;
+  border: none;
+  line-height: 0;
+  vertical-align: middle;
+}
+.about-links .about-icon-link {
+  border-bottom: none !important;
+}
+.about-icon-link svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.about-icon-link:hover { color: var(--text); }
+.about-icon-link:focus-visible {
+  outline: 1px solid var(--meta);
+  outline-offset: 2px;
+}
+.about-bio p.about-single {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--meta);
+  line-height: 1.65;
+  text-indent: 0;
+}
+.about-bio .about-open {
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.about-bio p.about-single strong { font-weight: 500; color: var(--text); }
+
+/* Wrap Highlights + rule above it; contents = no layout box when visible */
+.highlights-wrap {
+  display: contents;
+}
+.highlights-wrap.highlights-wrap--hidden {
+  display: none !important;
+}
+
+/* ── COMPACT CONTACT ── */
+.contact-compact { display: flex; flex-direction: column; gap: 3px; }
+
+
+/* ── AWARDS ── */
+.awards-list { list-style: none; padding: 0; }
+.awards-list li {
+  font-size: 12px; font-weight: 400; color: var(--meta);
+  line-height: 1.65; margin-bottom: 2px;
+  padding-left: 14px; position: relative;
+}
+.awards-list li::before {
+  content: "–"; position: absolute; left: 0; color: var(--rule);
+}
+.awards-list strong { font-weight: 400; color: var(--text); }
+
+/* ── LOADING ── */
+.loading-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(255,255,255,0.8); backdrop-filter: blur(2px);
+  z-index: 100; align-items: center; justify-content: center;
+}
+.loading-overlay.show { display: flex; }
+.loading-card {
+  background: #fff; border: 1px solid var(--rule);
+  padding: 20px 28px; display: flex; flex-direction: column;
+  align-items: center; gap: 10px;
+  font-size: 11px; color: var(--meta); font-family: var(--font);
+  font-weight: 300; letter-spacing: 0.04em;
+}
+.spinner {
+  width: 22px; height: 22px;
+  border: 1px solid var(--rule); border-top-color: var(--text);
+  border-radius: 50%; animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── PRINT ── */
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  html, body {
+    width: 100%;
+    height: auto !important;
+    margin: 0;
+    background: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  body, .app {
+    background: #ffffff !important;
+  }
+  .controls, .preview-toolbar, .loading-overlay { display: none !important; }
+  .app { display: block !important; }
+  .preview-area { display: block !important; padding: 0 !important; overflow: hidden !important; }
+  .cv-doc {
+    width: 210mm !important; max-width: none !important;
+    min-height: 0;
+    height: auto !important;
+    box-shadow: none !important;
+    padding: 12mm 14mm 14mm !important;
+    overflow: visible !important;
+    font-size: 11.5px !important;
+  }
+  .cv-header { page-break-after: avoid; }
+  .about-section { page-break-inside: avoid; }
+  .cv-name { font-size: 20px !important; }
+  .cv-sec-body { padding-bottom: 0 !important; }
+  .job { margin-bottom: 13px !important; }
+  .job-desc p { line-height: 1.55 !important; }
+  #skillsBlock .skill-items { font-size: 10px !important; line-height: 1.42 !important; }
+}
+
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; }
+  .controls { position: static; height: auto; }
+  .preview-area { padding: 20px; }
+  :root { --col-label: 80px; --col-meta: 120px; --cv-pad: 28px; }
+}
