@@ -66,9 +66,9 @@ function applyContent(data, lang) {
       websiteLink.textContent = c.website.replace(/^https?:\/\//, '');
     }
     // Leave email link as-is (managed by Cloudflare script in HTML)
-    // Phone is the standalone span child (not inside a link)
-    const phoneSpan = document.querySelector('.about-contact-stack > span:last-of-type');
-    if (phoneSpan && c.phone) phoneSpan.textContent = c.phone;
+    // Phone is hidden via CSS; runtime still updates the text in case you re-enable it later.
+    const phoneSpan = document.querySelector('.about-contact-stack .phone-number');
+    if (phoneSpan && c.phone !== undefined) phoneSpan.textContent = c.phone;
     // Icons
     const links = document.querySelectorAll('.about-links .about-icon-link');
     links.forEach(link => {

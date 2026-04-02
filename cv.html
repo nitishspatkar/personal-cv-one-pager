@@ -50,7 +50,7 @@
 
     <div class="ctrl-section" style="margin-top:auto;padding-top:16px;border-top:1px solid var(--rule);">
       <label>Export</label>
-      <button class="action-btn secondary" onclick="printInstructions()">Print / Save as PDF</button>
+      <button type="button" class="action-btn secondary" onclick="printInstructions()">Download PDF</button>
       <p style="font-size:9px;color:var(--label);line-height:1.7;margin-top:4px;">
         A4 portrait. In print dialog:<br>
         ① Paper size → A4<br>
@@ -67,7 +67,7 @@
       <span class="lang-badge" id="langBadge">EN</span>
       <span class="lang-badge badge-tailored" id="tailoredBadge" style="display:none">ATS Tailored</span>
       <span class="spacer"></span>
-      <button class="print-btn" onclick="printInstructions()">Print / Save as PDF</button>
+      <button type="button" class="print-btn" onclick="printInstructions()" title="Opens the print dialog — choose Save as PDF">Download PDF</button>
       <span id="printHint" style="font-size:10px;color:var(--label);display:none">→ set Destination to Save as PDF</span>
     </div>
 
@@ -89,7 +89,7 @@
           <div class="about-contact-stack">
             <a href="https://nitishpatkar.com" target="_blank">nitishpatkar.com</a>
             <a href="/cdn-cgi/l/email-protection#4826213c213b203b38293c23293a082f25292124662b2725"><span class="__cf_email__" data-cfemail="c2acabb6abb1aab1b2a3b6a9a3b082a5afa3abaeeca1adaf">[email&#160;protected]</span></a>
-            <span>+41 77 464 14 17</span>
+            <span class="phone-number">+41 77 464 14 17</span>
             <div class="about-links">
               <a class="about-icon-link" href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -261,6 +261,9 @@
     </div><!-- /cv-doc -->
   </main>
 </div>
+
+<!-- Always visible: fixed control (toolbar alone can wrap off-screen on narrow layouts) -->
+<button type="button" class="pdf-download-fab" onclick="printInstructions()" title="Opens the print dialog — choose Save as PDF">Download PDF</button>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="cv-runtime.js" defer></script>
