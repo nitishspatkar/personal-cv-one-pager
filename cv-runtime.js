@@ -19,18 +19,72 @@ function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
+function isBlank(val) {
+  if (val == null) return true;
+  if (typeof val === 'string') return val.trim() === '';
+  return false;
+}
+
+function mergeWithFallback(primary, fallback) {
+  if (!fallback) return primary || null;
+  if (!primary) return fallback;
+
+  // Strings / scalars: prefer primary if non-blank, else fallback
+  if (typeof primary !== 'object' || typeof fallback !== 'object') {
+    return isBlank(primary) ? fallback : primary;
+  }
+
+  // Arrays: merge by index
+  if (Array.isArray(primary) && Array.isArray(fallback)) {
+    const maxLen = Math.max(primary.length, fallback.length);
+    const result = [];
+    for (let i = 0; i < maxLen; i++) {
+      result[i] = mergeWithFallback(primary[i], fallback[i]);
+    }
+    return result;
+  }
+
+  // Objects: merge each key with fallback
+  const out = {};
+  const keys = new Set([...Object.keys(fallback), ...Object.keys(primary)]);
+  keys.forEach((key) => {
+    const p = primary[key];
+    const f = fallback[key];
+    if (typeof p === 'object' && p !== null) {
+      out[key] = mergeWithFallback(p, f);
+    } else if (isBlank(p)) {
+      out[key] = f;
+    } else {
+      out[key] = p;
+    }
+  });
+  return out;
+}
+
 async function loadAndApplyContent(lang) {
   const safeLang = lang === 'de' ? 'de' : 'en';
-  if (CONTENT[safeLang]) {
-    applyContent(CONTENT[safeLang], safeLang);
-    return;
-  }
   try {
-    const res = await fetch(`cv-content.${safeLang}.json`);
-    if (!res.ok) throw new Error(`Failed to load content for ${safeLang}`);
-    const data = await res.json();
-    CONTENT[safeLang] = data;
-    applyContent(data, safeLang);
+    // Always make sure English base is loaded
+    if (!CONTENT.en) {
+      const resEn = await fetch('cv-content.en.json');
+      if (!resEn.ok) throw new Error('Failed to load content for en');
+      CONTENT.en = await resEn.json();
+    }
+
+    if (safeLang === 'en') {
+      applyContent(CONTENT.en, 'en');
+      return;
+    }
+
+    // For German, load overrides and merge with English as fallback
+    if (!CONTENT.de) {
+      const resDe = await fetch('cv-content.de.json');
+      if (!resDe.ok) throw new Error('Failed to load content for de');
+      CONTENT.de = await resDe.json();
+    }
+
+    const merged = mergeWithFallback(CONTENT.de, CONTENT.en);
+    applyContent(merged, 'de');
   } catch (e) {
     console.error(e);
     showStatus('translateStatus', 'error', `Content load failed for ${safeLang}.`);
@@ -157,10 +211,21 @@ function applyContent(data, lang) {
 // Language toggle — wired to existing buttons
 function setLang(lang) {
   currentLang = lang === 'de' ? 'de' : 'en';
-  document.getElementById('btnEN').classList.toggle('active', currentLang === 'en');
-  document.getElementById('btnDE').classList.toggle('active', currentLang === 'de');
-  document.getElementById('langBadge').textContent = currentLang.toUpperCase();
-  document.getElementById('tailoredBadge').style.display = 'none';
+  const btnEN = document.getElementById('btnEN');
+  const btnDE = document.getElementById('btnDE');
+  if (btnEN) btnEN.classList.toggle('active', currentLang === 'en');
+  if (btnDE) btnDE.classList.toggle('active', currentLang === 'de');
+
+  const toolbarEN = document.getElementById('toolbarEN');
+  const toolbarDE = document.getElementById('toolbarDE');
+  if (toolbarEN) toolbarEN.classList.toggle('lang-toggle-btn--active', currentLang === 'en');
+  if (toolbarDE) toolbarDE.classList.toggle('lang-toggle-btn--active', currentLang === 'de');
+
+  const badge = document.getElementById('langBadge');
+  if (badge) badge.textContent = currentLang.toUpperCase();
+
+  const tailored = document.getElementById('tailoredBadge');
+  if (tailored) tailored.style.display = 'none';
   loadAndApplyContent(currentLang);
 }
 

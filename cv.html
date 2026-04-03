@@ -66,6 +66,12 @@
     <div class="preview-toolbar">
       <span class="lang-badge" id="langBadge">EN</span>
       <span class="lang-badge badge-tailored" id="tailoredBadge" style="display:none">ATS Tailored</span>
+
+      <div class="toolbar-lang-toggle">
+        <button type="button" class="lang-toggle-btn lang-toggle-btn--active" id="toolbarEN" onclick="setLang('en')">EN</button>
+        <button type="button" class="lang-toggle-btn" id="toolbarDE" onclick="setLang('de')">DE</button>
+      </div>
+
       <span class="spacer"></span>
       <button type="button" class="print-btn" onclick="printInstructions()" title="Opens the print dialog — choose Save as PDF">Download PDF</button>
       <span id="printHint" style="font-size:10px;color:var(--label);display:none">→ set Destination to Save as PDF</span>

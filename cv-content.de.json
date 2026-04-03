@@ -1,103 +1,103 @@
 {
   "meta": {
     "name": "Nitish Patkar",
-    "jobTitle": ""
+    "jobTitle": "Senior Researcher"
   },
-  "about": "",
+  "about": "Promotion in Informatik. Ich halte technische Teams konsequent auf Lieferthemen fokussiert und halte Stakeholder bei Zielen, Umfang und Trade-offs ausgerichtet. Ich identifiziere nicht offensichtliche Anforderungen frühzeitig, bestehe auf starker UX – nicht nur „gut genug“ – und verhandle nicht über Daten: Ich arbeite datengetrieben. Associate Member des International Requirements Engineering Board (IREB).",
   "contact": {
-    "website": "",
-    "email": "",
-    "phone": "",
-    "linkedin": "",
-    "github": ""
+    "website": "https://nitishpatkar.com",
+    "email": "[email protected]",
+    "phone": "+41 77 464 14 17",
+    "linkedin": "https://linkedin.com",
+    "github": "https://github.com"
   },
   "experience": [
     {
       "company": "FHNW",
-      "role": "",
-      "period": "",
-      "location": "",
-      "body": ""
+      "role": "Senior Researcher",
+      "period": "März 2022 – heute",
+      "location": "Brugg, CH",
+      "body": "Leitung angewandter Innovationsprojekte mit KMU und Start-ups in den Bereichen Energie, Mobilität und KI – von der Roadmap bis zur Auslieferung. Coaching von Product Ownern und agilen Teams zu Backlog-Priorisierung, teamübergreifender Koordination und Wertlieferung über Agile Release Trains hinweg. Einwerbung von Forschungsmitteln; Management von Stakeholder-Beziehungen und Koordination von Release-Plänen mit internen und externen Partnern."
     },
     {
-      "company": "University of Bern",
-      "role": "",
-      "period": "",
-      "location": "",
-      "body": ""
+      "company": "Universität Bern",
+      "role": "Wissenschaftlicher Mitarbeiter",
+      "period": "Februar 2018 – Februar 2022",
+      "location": "Bern, CH",
+      "body": "Betreuung von über 50 Studierenden pro Jahr über den gesamten Softwareprojekt-Lebenszyklus; Durchführung eines Seminars zur Softwaretechnik und Betreuung von Bachelor- und Masterarbeiten."
     },
     {
       "company": "ActiDo GmbH",
-      "role": "",
-      "period": "",
-      "location": "",
-      "body": ""
+      "role": "Webentwickler",
+      "period": "Januar 2017 – Januar 2018",
+      "location": "Paderborn, DE",
+      "body": "Umsetzung von React-Frontends auf Basis von UI/UX-Spezifikationen; verantwortlich für HTML, CSS und Frontend-Logik."
     },
     {
-      "company": "University of Paderborn",
-      "role": "",
-      "period": "",
-      "location": "",
-      "body": ""
+      "company": "Universität Paderborn",
+      "role": "Wissenschaftlicher Mitarbeiter",
+      "period": "Januar 2016 – Januar 2018",
+      "location": "Paderborn, DE",
+      "body": "Erhebung von Anforderungen bei Volksbank-Kund:innen; Entwicklung einer Single-Page-Sport-App mit Angular und Django REST."
     },
     {
       "company": "Infosys Ltd.",
-      "role": "",
-      "period": "",
-      "location": "",
-      "body": ""
+      "role": "Systems Engineer",
+      "period": "Januar 2012 – Januar 2014",
+      "location": "Pune, IN",
+      "body": "PLM-Entwicklung auf Basis von Windchill; Umsetzung von Enterprise-Webanwendungen für Cox Communications und weitere Telekommunikationskunden."
     }
   ],
   "education": [
     {
-      "years": "",
-      "institution": "",
-      "degree": ""
+      "years": "2018 – 2022",
+      "institution": "Universität Bern",
+      "degree": "Ph.D. Informatik, Schweiz"
     },
     {
-      "years": "",
-      "institution": "",
-      "degree": ""
+      "years": "2014 – 2018",
+      "institution": "Universität Paderborn",
+      "degree": "M.Sc. Informatik, Deutschland"
     },
     {
-      "years": "",
-      "institution": "",
-      "degree": ""
+      "years": "2009 – 2012",
+      "institution": "University of Mumbai",
+      "degree": "B.E. Informatik, Indien"
     }
   ],
   "skills": [
     {
-      "category": "",
-      "items": ""
+      "category": "Forschung & Projektmanagement",
+      "items": "Technisches Projektmanagement, Roadmapping, Requirements Engineering"
     },
     {
-      "category": "",
-      "items": ""
+      "category": "Arbeitsweisen",
+      "items": "Agile, Scrum"
     },
     {
-      "category": "",
-      "items": ""
+      "category": "Engineering",
+      "items": "Python, JavaScript, React, Django REST"
     },
     {
-      "category": "",
-      "items": ""
+      "category": "Daten & KI",
+      "items": "LLMs, NLP"
     },
     {
-      "category": "",
-      "items": ""
+      "category": "Tools",
+      "items": "GitHub, Docker, CI/CD, Jira, Figma"
     }
   ],
   "languages": [
-    { "name": "", "level": "" },
-    { "name": "", "level": "" },
-    { "name": "", "level": "" },
-    { "name": "", "level": "" }
+    { "name": "Deutsch", "level": "Verhandlungssicher" },
+    { "name": "Englisch", "level": "Verhandlungssicher" },
+    { "name": "Hindi", "level": "Fließend" },
+    { "name": "Marathi", "level": "Muttersprache" }
   ],
   "highlights": [
-    "",
-    "",
-    "",
-    ""
+    "Lokale Organisation der XP'25 — 26th International Conference on Agile Software Development.",
+    "Best Reviewer Award REFSQ 2024 & 2025.",
+    "Reviewer / PC-Mitglied bei IEEE RE, REFSQ, XP, TOSEM, EMSE, IST, ICT4S, SE-SRC (2012–2026).",
+    "Mitorganisator des 9. und 10. International Workshop on Crowd-Based Requirements Engineering (2025, 2026)."
   ]
 }
 
